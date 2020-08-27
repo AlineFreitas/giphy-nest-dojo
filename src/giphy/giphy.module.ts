@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
+import { GiphyController } from './giphy.controller';
+import { GiphyService } from './giphy.service';
 
 @Module({
-  controllers: [],
-  providers: []
+  controllers: [GiphyController],
+  providers: [GiphyService]
 })
 export class GiphyModule {}
