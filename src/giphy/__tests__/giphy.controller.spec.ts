@@ -4,19 +4,23 @@ import { GiphyService } from '../giphy.service';
 import { of } from 'rxjs';
 import { AxiosResponse } from 'axios';
 import { GifList } from '../domain/gif-list.dto';
+import { GiphyConfig } from '../config';
+import { HttpModule } from '@nestjs/common';
 
 describe('GiphyController', () => {
   let controller: GiphyController;
   let service: GiphyService;
+  let giphyConfig: GiphyConfig;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [GiphyController],
-      providers: [GiphyService],
-      imports: [],
+      providers: [GiphyService, GiphyConfig],
+      imports: [HttpModule],
     }).compile();
 
     controller = module.get<GiphyController>(GiphyController);
+    giphyConfig = module.get<GiphyConfig>(GiphyConfig);
     service = module.get<GiphyService>(GiphyService);
   });
 
