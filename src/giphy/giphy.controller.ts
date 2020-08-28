@@ -1,11 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { GiphyService } from './giphy.service';
 
 @Controller('giphy')
 export class GiphyController {
     constructor(private service: GiphyService) {}
 
-    searchByKeyword(keywords: string) {
-        return this.service.searchByKeyword(keywords);
+    @Get()
+    searchByKeyword(@Query('q') keyword: string) {
+        return this.service.searchByKeyword(keyword);
     }
 }
