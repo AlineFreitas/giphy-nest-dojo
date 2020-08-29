@@ -44,21 +44,13 @@ it('should be defined', () => {
       "https://giphy.com/gifs/miguelcotto-boxing-miguel-cotto-3oEduSLalG3rotykI8"
     ];
 
-    const respostaEsperada: AxiosResponse = {
-      data: gifList,
-      status: 200,
-      statusText: 'OK',
-      headers: {},
-      config: {},
-    };
-
     jest
         .spyOn(service, 'searchByKeyword')
-        .mockImplementation(() => of(respostaEsperada));
+        .mockImplementation(() => of(gifList));
 
     controller.searchByKeyword(keyword).subscribe(
       respostaObtida => {
-        expect(respostaObtida).toEqual(respostaEsperada);
+        expect(respostaObtida).toEqual(gifList);
         done();
       }
     );
