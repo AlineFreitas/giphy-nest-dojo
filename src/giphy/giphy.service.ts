@@ -1,8 +1,8 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { HttpService, Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { GiphyConfig } from './config';
 import { GifList } from './domain/gif-list.dto';
 import { Observable, pipe } from 'rxjs';
-import { map, pluck, tap } from 'rxjs/operators';
+import { map, pluck, tap, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class GiphyService {
@@ -14,6 +14,9 @@ export class GiphyService {
     ).pipe(
       pluck('data', 'data'),
       map(entries => entries.map(entry => entry.url)),
+      catchError(error => {
+        throw new HttpException('Internal Error.', HttpStatus.INTERNAL_SERVER_ERROR);
+      }),
     );
   }
 }

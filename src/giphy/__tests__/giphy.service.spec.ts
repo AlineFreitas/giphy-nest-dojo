@@ -1,9 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { GiphyService } from '../giphy.service';
-import { HttpModule, HttpService } from '@nestjs/common';
+import { HttpModule, HttpService, HttpException } from '@nestjs/common';
 import { GiphyConfig } from '../config';
 import { AxiosResponse } from 'axios';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { GifList } from '../domain/gif-list.dto';
 import * as searchResponse from './fixtures/search-response.json';
 
@@ -73,6 +74,32 @@ describe('GiphyService', () => {
       service.searchByKeyword(keyword).subscribe(res => {
         expect(res).toEqual(gifList);
         done();
+      });
+    });
+
+    describe('Quando ocorre um erro na requisição', () => {
+      beforeEach(() => {
+        const resposta: AxiosResponse = {
+          data: searchResponse,
+          status: 500,
+          statusText: 'OK',
+          headers: {},
+          config: {},
+        };
+
+        jest
+          .spyOn(httpService, 'get')
+          .mockReturnValue(throwError(resposta));
+
+      });
+
+      it('Levanta exceção quando ocorre um erro', done => {
+        service.searchByKeyword(keyword).subscribe({
+          error: error => {
+            expect(error).toBeInstanceOf(HttpException);
+            done();
+          }
+        });
       });
     });
   });
