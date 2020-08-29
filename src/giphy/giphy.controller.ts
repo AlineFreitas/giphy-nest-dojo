@@ -5,10 +5,10 @@ import { GifList } from './domain/gif-list.dto';
 
 @Controller('giphy')
 export class GiphyController {
-    constructor(private service: GiphyService) {}
+  constructor(private service: GiphyService) {}
 
-    @Get()
-    searchByKeyword(@Query('q') keyword: string): Observable<GifList> {
-        return this.service.searchByKeyword(keyword);
-    }
+  @Get()
+  searchByKeyword(@Query('q') keyword: string): Observable<GifList> {
+    return this.service.searchByKeyword(keyword);
+  }
 }
