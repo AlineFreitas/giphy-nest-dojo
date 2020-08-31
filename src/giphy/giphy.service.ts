@@ -7,11 +7,16 @@ import { GifList } from './domain/gif-list.dto';
 
 @Injectable()
 export class GiphyService {
-  constructor(private config: GiphyConfig, private http: HttpService) {}
+  constructor(private config: GiphyConfig, private http: HttpService) {
+  }
 
   searchByKeyword(keyword: string): Observable<AxiosResponse<GifList>> {
     return this.http.get(
-      `${this.config.gifSearchUrl()}?api_key=${this.config.apiKey()}&q=${keyword}`
-    );
+      this.config.gifSearchUrl(), {
+        params: {
+          api_key: this.config.apiKey(),
+          q: keyword
+        }
+      });
   }
 }
