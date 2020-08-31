@@ -1,0 +1,28 @@
+export const giflist = [
+    "https://giphy.com/gifs/vintage-the-addams-family-cousin-it-ToMjGpPDRe3cSYKO8Du",
+    "https://giphy.com/gifs/addams-family-11XZmjOcJBNPt6",
+    "https://giphy.com/gifs/90s-classic-the-addams-family-Mh8jTmycSuoWA",
+    "https://giphy.com/gifs/film-1990s-addams-family-values-xaWCR19HqepNK",
+    "https://giphy.com/gifs/rose-the-addams-family-morticia-2rXPbTgLFEob6",
+    "https://giphy.com/gifs/the-addams-family-morticia-gomez-mPAccW4MPj3Ta",
+    "https://giphy.com/gifs/vintage-kiss-morticia-addams-3o72F5VuisZaaHh9AY",
+    "https://giphy.com/gifs/rami-malek-nVLvw3VBnblPq",
+    "https://giphy.com/gifs/mad-1ludrxHRnUmT6",
+    "https://giphy.com/gifs/morticia-addams-XuTeJ0SLFRyko",
+    "https://giphy.com/gifs/girl-horror-creepy-aOPINgmqpVXNK",
+    "https://giphy.com/gifs/christina-addams-tafv-HUzxKRiSNLoEo",
+    "https://giphy.com/gifs/the-addams-family-morticia-gomez-WROIUH9DXrWCI",
+    "https://giphy.com/gifs/halloween-gif-addams-family-xegjsTYVxJcnS",
+    "https://giphy.com/gifs/queue-the-addams-family-morticia-zIEnSEgNVWsVy",
+    "https://giphy.com/gifs/the-addams-family-morticia-gomez-barvvy6Ta8kjm",
+    "https://giphy.com/gifs/hulu-scary-spooky-huluween-oVfN9bn0EGHWgXkLYc",
+    "https://giphy.com/gifs/the-addams-family-wednesday-morticia-mGrUy2KaglwRi",
+    "https://giphy.com/gifs/the-addams-family-morticia-gomez-bLmhoxRolfJrG",
+    "https://giphy.com/gifs/film-1990s-the-addams-family-iPYf5QUjvmAeI",
+    "https://giphy.com/gifs/the-addams-family-morticia-anjelica-huston-QgCpsnkVb3Fqo",
+    "https://giphy.com/gifs/hulu-15bj76PJIEXr7pUWNi",
+    "https://giphy.com/gifs/1960s-ysTUxdj02ZYre",
+    "https://giphy.com/gifs/dancing-the-addams-family-morticia-spxsnvjlv4OnS",
+    "https://giphy.com/gifs/the-addams-family-knitting-morticia-cE0xKMkoSeHuw"
+  ]
+
