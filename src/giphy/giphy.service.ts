@@ -2,7 +2,7 @@ import { HttpService, Injectable, HttpException, HttpStatus } from '@nestjs/comm
 import { GiphyConfig } from './config';
 import { GifList } from './domain/gif-list.dto';
 import { Observable, pipe } from 'rxjs';
-import { map, pluck, tap, catchError } from 'rxjs/operators';
+import { map, pluck, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class GiphyService {
