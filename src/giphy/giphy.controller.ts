@@ -8,7 +8,7 @@ export class GiphyController {
   constructor(private service: GiphyService) {}
 
   @Get()
-  searchByKeyword(@Query('q') keyword: string): Observable<GifList> {
+  searchByKeyword(@Query('keyword') keyword: string): Observable<GifList> {
     return this.service.searchByKeyword(keyword);
   }
 }
