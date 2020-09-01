@@ -1,12 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { of } from 'rxjs';
-import { HttpModule } from '@nestjs/common';
-import { AxiosResponse } from 'axios';
-
 import { GiphyController } from '../giphy.controller';
 import { GiphyService } from '../giphy.service';
+import { of } from 'rxjs';
+import { AxiosResponse } from 'axios';
 import { GifList } from '../domain/gif-list.dto';
 import { GiphyConfig } from '../config';
+import { HttpModule } from '@nestjs/common';
 
 describe('GiphyController', () => {
     let controller: GiphyController;
@@ -38,28 +37,22 @@ describe('GiphyController', () => {
         expect(service.searchByKeyword).toHaveBeenCalledWith('a');
     });
 
-    it('retorna lista de gifs ao fazer busca por palavra-chave', async done => {
-      const keyword = 'keyword';
-      const gifList: GifList = [
-        "https://giphy.com/gifs/boxing-coach-knowledge-GWjUw6yjJcGME",
-        "https://giphy.com/gifs/miguelcotto-boxing-miguel-cotto-3oEduSLalG3rotykI8"
-      ];
-      const resposta: AxiosResponse = {
-        data: gifList,
-        status: 200,
-        statusText: 'OK',
-        headers: {},
-        config: {},
-      };
+    it('fetches gif list by keyword', async done => {
+        const keyword = 'keyword';
+        const gifList: GifList = [
+            "https://giphy.com/gifs/boxing-coach-knowledge-GWjUw6yjJcGME",
+            "https://giphy.com/gifs/miguelcotto-boxing-miguel-cotto-3oEduSLalG3rotykI8"
+        ];
 
-      jest
-        .spyOn(service, 'searchByKeyword')
-        .mockImplementation(() => of(resposta));
+        jest
+            .spyOn(service, 'searchByKeyword')
+            .mockImplementation(() => of(gifList));
 
-      controller.searchByKeyword(keyword).subscribe(
-        respostaObtida => {
-            expect(respostaObtida).toEqual(gifList);
-            done();
-        });
+        controller.searchByKeyword(keyword).subscribe(
+            respostaObtida => {
+                expect(respostaObtida).toEqual(gifList);
+                done();
+            }
+        );
     });
 });
